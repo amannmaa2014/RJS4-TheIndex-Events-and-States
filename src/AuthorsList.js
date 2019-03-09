@@ -2,16 +2,22 @@ import React, { Component } from "react";
 
 // Components
 import AuthorCard from "./AuthorCard";
+import SearchBar from "./SearchBar";
 
 class AuthorsList extends Component {
   render() {
-    const authorCards = this.props.authors.map(author => (
-      <AuthorCard key={author.first_name + author.last_name} author={author} />
+    const authorCards = this.props.authorsProp.map(author => (
+      <AuthorCard
+        key={author.first_name + author.last_name}
+        author={author}
+        selectAuthor={this.props.selectAuthorProp}
+      />
     ));
 
     return (
       <div className="authors">
         <h3>Authors</h3>
+        <SearchBar filterAuthorsSearch={this.props.filterAithorsProp} />
         <div className="row">{authorCards}</div>
       </div>
     );
